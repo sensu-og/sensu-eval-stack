@@ -37,6 +37,12 @@ SparkleFormation.new(:sensu).load(:base, :compute, :in_a_vpc).overrides do
         )
         registry!(:init_and_signal_user_data, :sensu, :init_resource => :sensu_ec2_instance, :signal_resource => :sensu_ec2_instance)
       end
+      creation_policy do
+        resource_signal do
+          count 1
+          timeout 'PT15M'
+        end
+      end
       metadata('AWS::CloudFormation::Init') do
         _camel_keys_set(:auto_disable)
         configSets do

@@ -18,7 +18,7 @@ SfnRegistry.register(:init_and_signal_user_data) do |_name, _config|
         ' --stack ',
         stack_name!,
         ' --resource ',
-        process_key!(_config[:notify_resource]),
+        process_key!(_config[:signal_resource]),
         "\n"
       )
     )
