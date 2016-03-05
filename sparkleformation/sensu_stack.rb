@@ -36,7 +36,7 @@ SparkleFormation.new(:sensu).load(:base, :compute, :in_a_vpc).overrides do
       type 'AWS::EC2::Instance'
       properties do
         image_id map!(:official_amis, region!, 'trusty')
-        instance_type 't2.micro'
+        instance_type 'm3.large'
         iam_instance_profile ref!(:sensu_instance_profile)
         key_name ref!(:ssh_key_pair)
         network_interfaces array!(
