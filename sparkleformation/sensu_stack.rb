@@ -3,6 +3,18 @@ SparkleFormation.new(:sensu).load(:base, :compute, :in_a_vpc).overrides do
   registry!(:official_amis, :sensu, :type => 'ebs')
 
   parameters do
+    sensu_repo_user do
+      type 'String'
+      description 'Username for Sensu Enterprise Repo'
+      default ENV['SENSU_ENTERPRISE_USER']
+    end
+
+    sensu_repo_pass do
+      type 'String'
+      description 'Password for Sensu Enterprise Repo'
+      default ENV['SENSU_ENTERPRISE_PASS']
+    end
+
     ssh_key_pair do
       type 'String'
       description 'SSH Keypair'
