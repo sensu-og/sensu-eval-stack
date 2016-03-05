@@ -84,7 +84,7 @@ SparkleFormation.new(:sensu).load(:base, :compute, :in_a_vpc).overrides do
       },
       :http => {
         :protocol => 'tcp',
-        :ports => 80
+        :ports => 3000
       }
     },
     :egress => {
@@ -99,8 +99,11 @@ SparkleFormation.new(:sensu).load(:base, :compute, :in_a_vpc).overrides do
     ec2_ip_address do
       value attr!(:sensu_ec2_instance, :public_ip)
     end
-    ec2_dns_address do
+    sensu_hostname do
       value attr!(:sensu_ec2_instance, :public_dns_name)
+    end
+    sensu_dashboard_url do
+      value join!('http://', attr!(:sensu_ec2_instance, :public_dns_name), ':3000')
     end
   end
 end
