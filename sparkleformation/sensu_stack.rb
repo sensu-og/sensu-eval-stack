@@ -97,11 +97,14 @@ SparkleFormation.new(:sensu).load(:base, :compute, :in_a_vpc).overrides do
   )
 
   outputs do
-    ec2_ip_address do
-      value attr!(:sensu_ec2_instance, :public_ip)
+    ssh_address do
+      value join!('ubuntu@', attr!(:sensu_ec2_instance, :public_dns_name))
     end
-    sensu_hostname do
+    public_rabbitmq_host do
       value attr!(:sensu_ec2_instance, :public_dns_name)
+    end
+    private_rabbit_host do
+      value attr!(:sensu_ec2_instance, :private_dns_name)
     end
     sensu_dashboard_url do
       value join!('http://', attr!(:sensu_ec2_instance, :public_dns_name), ':3000')
