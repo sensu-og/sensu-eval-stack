@@ -1,4 +1,4 @@
-SfnRegistry.register(:rabbitmq) do
+SfnRegistry.register(:rabbitmq) do | _config = {} |
   metadata('AWS::CloudFormation::Init') do
     _camel_keys_set(:auto_disable)
     configSets do |sets|
@@ -18,7 +18,9 @@ SfnRegistry.register(:rabbitmq) do
         command 'sudo wget http://www.rabbitmq.com/releases/rabbitmq-server/v3.6.0/rabbitmq-server_3.6.0-1_all.deb && sudo dpkg -i rabbitmq-server_3.6.0-1_all.deb'
       end
       commands('05_configure_rabbit_mq') do
-        command 'sudo rabbitmqctl add_vhost /sensu && sudo rabbitmqctl add_user sensu secret && sudo rabbitmqctl set_permissions -p /sensu sensu ".*" ".*" ".*"'
+        command join!('sudo rabbitmqctl add_vhost /sensu && sudo rabbitmqctl add_user sensu ',
+          _config.fetch(:queue_password, 'secret'),
+          ' && sudo rabbitmqctl set_permissions -p /sensu sensu ".*" ".*" ".*"')
       end
     end
   end

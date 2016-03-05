@@ -1,4 +1,4 @@
-SfnRegistry.register(:sensu_enterprise) do
+SfnRegistry.register(:sensu_enterprise) do | _config = {} |
   metadata('AWS::CloudFormation::Init') do
     _camel_keys_set(:auto_disable)
     configSets do |sets|
@@ -55,7 +55,7 @@ SfnRegistry.register(:sensu_enterprise) do
             host 'localhost'
             vhost '/sensu'
             user 'sensu'
-            password 'secret'
+            password _config.fetch(:queue_password, 'secret')
           end
           redis do
             host 'localhost'

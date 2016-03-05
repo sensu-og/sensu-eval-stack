@@ -1,6 +1,7 @@
 SparkleFormation.new(:sensu).load(:base, :compute, :in_a_vpc).overrides do
   zone = registry!(:zones).first
   registry!(:official_amis, :sensu, :type => 'ebs')
+  rabbitmq_password = ::SecureRandom.hex
 
   parameters do
     sensu_repo_user do
@@ -61,10 +62,10 @@ SparkleFormation.new(:sensu).load(:base, :compute, :in_a_vpc).overrides do
           default [ ]
         end
       end
-      registry!(:rabbitmq)
+      registry!(:rabbitmq, :queue_password => rabbitmq_password)
       registry!(:redis)
-      registry!(:sensu_enterprise)
-      registry!(:sensu_client)
+      registry!(:sensu_enterprise, :queue_password => rabbitmq_password)
+      registry!(:sensu_client, :queue_password => rabbitmq_password)
     end
 
     sensu_instance_profile do
