@@ -21,7 +21,7 @@ You should additionally collect the following values which you'll enter when pro
 To build the stack, run the following commands:
 ```ruby
 bundle install
-bundle exec sfn create <your stack name>
+bundle exec sfn create <your-stack-name>
 ```
 You will be prompted as follows:
 ```
@@ -35,12 +35,16 @@ Enter `1` then follow the prompts. The values in `[]` are defaults.
 When the stack completes, you'll see outputs like:
 ```
 [Sfn]: Stack create complete: SUCCESS
-[Sfn]: Stack description of <your stack name>:
+[Sfn]: Stack description of <your-stack-name>:
 [Sfn]: Outputs for stack: sensu-eval-stack-those-examples
 [Sfn]:    Ssh Address: ubuntu@ec2-52-37-76-105.us-west-2.compute.amazonaws.com
 [Sfn]:    Public Rabbitmq Host: ec2-52-37-76-105.us-west-2.compute.amazonaws.com
 [Sfn]:    Private Rabbit Host: ip-10-0-0-245.us-west-2.compute.internal
 [Sfn]:    Sensu Dashboard Url: http://ec2-52-37-76-105.us-west-2.compute.amazonaws.com:3000
+```
+To view these outputs in the future, execute:
+```
+bundle exec sfn describe -o <your-stack-name>
 ```
 ### Using Your Evaluation Install
 You should be able to access the Sensu Enterprise dashboard at the provided URL with no authentication. Keep this in mind as you experiment with the stack.
