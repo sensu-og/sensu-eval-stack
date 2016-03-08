@@ -53,3 +53,9 @@ You can download a sample Sensu Client config file from the ubuntu home folder v
 ```
 scp ubuntu@ec2-52-37-76-105.us-west-2.compute.amazonaws.com:~/sensu_client_example.json ./
 ```
+
+### Destroying the Evaluation Stack
+To destroy the stack, execute:
+```
+bundle exec sfn destroy <your-stack-name>
+```
