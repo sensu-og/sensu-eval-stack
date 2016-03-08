@@ -51,7 +51,7 @@ SfnRegistry.register(:sensu_client) do | _config = {} |
     end
 
     sensu_config_examples do
-      files('/home/ubuntu/remote_client_example.json') do
+      files('/home/ubuntu/sensu_client_example.json') do
         content do
           client do
             name 'remote_client'
@@ -59,24 +59,7 @@ SfnRegistry.register(:sensu_client) do | _config = {} |
             subscriptions [ 'all' ]
           end
           rabbitmq do
-            host 'PublicRabbitMqHost (from Stack Outputs)'
-            vhost '/sensu'
-            user 'sensu'
-            password _config.fetch(:queue_password, 'secret')
-          end
-        end
-        owner 'ubuntu'
-        mode '000600'
-      end
-      files('/home/ubuntu/vpc_client_example.json') do
-        content do
-          client do
-            name 'vpc_client'
-            address 'vpc_client_address'
-            subscriptions [ 'all' ]
-          end
-          rabbitmq do
-            host 'PrivateRabbitMqHost (from Stack Outputs)'
+            host 'PublicRabbitMqHost or PrivateRabbitMqHost (from Stack Outputs)'
             vhost '/sensu'
             user 'sensu'
             password _config.fetch(:queue_password, 'secret')
