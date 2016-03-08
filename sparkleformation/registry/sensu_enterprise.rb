@@ -59,7 +59,7 @@ SfnRegistry.register(:sensu_enterprise) do | _config = {} |
         content do
           sensu array!(
             -> {
-              name 'Datacenter 1'
+              name 'Sensu Enterprise Eval'
               host 'localhost'
             }
           )
