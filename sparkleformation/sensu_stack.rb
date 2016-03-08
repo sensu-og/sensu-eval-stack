@@ -90,6 +90,7 @@ SparkleFormation.new(:sensu).load(:base, :compute, :in_a_vpc).overrides do
       :rabbitmq => {
         :protocol => 'tcp',
         :ports => 5671
+      }
     },
     :egress => {
       :all => {
