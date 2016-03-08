@@ -33,16 +33,6 @@ SfnRegistry.register(:sensu_enterprise) do | _config = {} |
           set!('sensu-enterprise-dashboard', [ ])
         end
       end
-      services do
-        sysvinit do
-          enabled true
-          ensureRunning true
-          packages do
-            apt ['sensu-enterprise', 'sensu-enterprise-dashboard']
-          end
-          files ['/etc/sensu/config.json', '/etc/sensu/dashboard.json']
-        end
-      end
     end
 
     sensu_enterprise_config do
