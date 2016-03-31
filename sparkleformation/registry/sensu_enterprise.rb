@@ -51,7 +51,7 @@ SfnRegistry.register(:sensu_enterprise) do | _config = {} |
             host 'localhost'
           end
           api do
-            host 'locahost'
+            host 'localhost'
           end
         end
       end

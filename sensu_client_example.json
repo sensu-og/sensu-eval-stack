@@ -1,0 +1,1 @@
+{"client": {"subscriptions": ["all"], "name": "remote_client", "address": "remote_client_address"}, "rabbitmq": {"vhost": "/sensu", "host": "PublicRabbitMqHost or PrivateRabbitMqHost (from Stack Outputs)", "password": "2797a9aa7c9056b58ba484a7090e7d6d", "user": "sensu"}}
