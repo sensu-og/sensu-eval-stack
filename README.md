@@ -10,8 +10,8 @@ Export the following Environment Variables:
 * `AWS_ACCESS_KEY_ID`: Your AWS Access Key with permissions to build Cloudformation Stacks.
 * `AWS_SECRET_ACCESS_KEY`: The Secret Key associated with your Access Key ID.
 * `AWS_REGION`: The region in which you're building.
-* `SENSU_ENTERPRISE_USER`: Your Sensu Enterprise Username (this can also be entered at runtime when prompted).
-* `SENSU_ENTERPRISE_PASS`: Your Sensu Enterprise Password (this can also be entered at runtime when prompted).
+* `SENSU_ENTERPRISE_USER`: Your Sensu Enterprise Repository Username (this can also be entered at runtime when prompted).
+* `SENSU_ENTERPRISE_PASS`: Your Sensu Enterprise Repository Password (this can also be entered at runtime when prompted).
 
 You should additionally collect the following values which you'll enter when prompted:
 * Your VPC ID.
